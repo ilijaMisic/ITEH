@@ -65,6 +65,34 @@ class Database {
         exit('success');
     }
 
+     // Insert
+     public function insert(Student $student)
+     {
+         $name = $this->conn->real_escape_string($student->name);
+         $birth_date = $student->birth_date;
+         $teacher = $this->conn->real_escape_string($student->teacher);
+         $start_date = $student->start_date;
+         $user_id = $student->user_id;
+         $group_id = $student->group_id;
+ 
+         $data = $this->conn -> query("SELECT * FROM students WHERE name='$name' AND group_id='$group_id' AND start_date='$start_date'");
+ 
+         if($data->num_rows > 0)
+         {
+             exit("Student is already added!");
+         }
+         else
+         {
+             $result = $this->conn -> query("INSERT INTO students (name, birth_date, teacher, start_date, user_id, group_id) 
+             VALUES('$name', '$birth_date', '$teacher', '$start_date', '$user_id', '$group_id')");
+ 
+             if($result)
+             {
+                 exit('success'); 
+             }
+         }
+     }
+
 
 }
 ?>

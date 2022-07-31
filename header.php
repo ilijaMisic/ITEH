@@ -21,7 +21,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" href="#">Welcome to Smart</a>
+                <a class="navbar-brand" href="home.php">Welcome to Smart</a>
                 <?php if(isset($_SESSION['user_id'])):?>  
                     <ul class="navbar-nav mr-auto"> 
                         <li class="nav-item">

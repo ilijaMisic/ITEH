@@ -23,6 +23,29 @@ if (isset($_POST['key'])) {
         case 'logout':
             $db->logout();
             break;  
+
+         case 'addNew':
+            if(isset($_POST['name']) && isset($_POST['birth_date']) && isset($_POST['teacher']) && isset($_POST['start_date']) && isset($_POST['selectedValue']))
+            {   
+           
+                $name = $_POST['name'];
+                $birth_date = $_POST['birth_date'];
+                $teacher = $_POST['teacher'];
+                $start_date = $_POST['start_date'];
+                $user_id = intval($_SESSION['user_id']);
+                $group_id = intval($_POST['selectedValue']);
+
+                
+                $student = new Student(null, $name, $birth_date, $teacher, $start_date, $user_id, $group_id);
+                
+
+                $db->insert($student);
+            }
+            else
+            {         
+                echo 'Failed to add new student!';
+            }
+            break;                
         }
 
     }
